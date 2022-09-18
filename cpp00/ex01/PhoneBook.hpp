@@ -12,7 +12,7 @@ class PhoneBook
 
 	void add(Contact *contact);
 
-	void printField(char *field);
+	void printField(std::string field);
 
 	void printList();
 

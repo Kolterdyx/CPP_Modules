@@ -2,16 +2,26 @@
 
 Contact::Contact()
 {
-	std::cout << "First Name: ";
-	std::cin >> this->name;
-	std::cout << "Last Name: ";
-	std::cin >> this->last_name;
-	std::cout << "Nickname: ";
-	std::cin >> this->nick;
-	std::cout << "Phone Number: ";
-	std::cin >> this->phone_number;
-	std::cout << "Darkest Secret: ";
-	std::cin >> this->darkest_secret;
+	do {
+		std::cout << "First Name: ";
+		std::getline(std::cin, this->name);
+	} while (this->name.empty());
+	do {
+		std::cout << "Last Name: ";
+		std::getline(std::cin, this->last_name);
+	} while (this->last_name.empty());
+	do {
+		std::cout << "Nickname: ";
+		std::getline(std::cin, this->nick);
+	} while (this->nick.empty());
+	do {
+		std::cout << "Phone Number: ";
+		std::getline(std::cin, this->phone_number);
+	} while (this->phone_number.empty());
+	do {
+		std::cout << "Darkest Secret: ";
+		std::getline(std::cin, this->darkest_secret);
+	} while (this->darkest_secret.empty());
 }
 
 void Contact::print() {

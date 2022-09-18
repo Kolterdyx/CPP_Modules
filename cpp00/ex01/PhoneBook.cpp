@@ -24,9 +24,9 @@ void PhoneBook::add(Contact *contact) {
 	count++;
 }
 
-void PhoneBook::printField(char *field)
+void PhoneBook::printField(std::string field)
 {
-	int spaces = 10 - (int)strlen(field);
+	int spaces = 10 - (int)field.length();
 	for (int x = 0; x < spaces; x++)
 		std::cout << " ";
 	if (spaces >= 0)

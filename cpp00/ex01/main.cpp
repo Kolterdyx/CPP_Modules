@@ -5,32 +5,32 @@
 
 int	main(void)
 {
-	char		prompt[1000];
+	std::string	prompt;
 	PhoneBook	*book;
 
 	book = new PhoneBook();
 	while (1)
 	{
 		std::cout << "PhoneBook> ";
-		std::cin >> prompt;
-		if (!strncmp("EXIT", prompt, 4))
+		std::getline(std::cin, prompt);
+		if (!prompt.compare("EXIT"))
 			break ;
-		else if (!strncmp("SEARCH", prompt, 7))
+		else if (!prompt.compare("SEARCH"))
 		{
 			book->printList();
 			Contact *c;
 			int index;
 			do {
 				std::cout << "Index: ";
-				std::cin >> prompt;
-				index = atoi(prompt);
+				std::getline(std::cin, prompt);
+				index = std::stoi(prompt);
 				c = book->getContact(index);
 			} while (c == NULL && index != -1);
 			if (index == -1)
 				continue;
 			c->print();
 		}
-		else if (!strncmp("ADD", prompt, 3))
+		else if (!prompt.compare("ADD"))
 			book->add(new Contact());
 	}
 	delete book;

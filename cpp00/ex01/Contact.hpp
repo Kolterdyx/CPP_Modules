@@ -7,11 +7,11 @@
 class Contact
 {
 public:
-	char name[1000];
-	char last_name[1000];
-	char nick[1000];
-	char phone_number[1000];
-	char darkest_secret[1000];
+	std::string name;
+	std::string last_name;
+	std::string nick;
+	std::string phone_number;
+	std::string darkest_secret;
 
 	Contact();
 
