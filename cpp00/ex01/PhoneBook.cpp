@@ -24,6 +24,20 @@ void PhoneBook::add(Contact *contact) {
 	count++;
 }
 
+void PhoneBook::printField(char *field)
+{
+	int spaces = 10 - (int)strlen(field);
+	for (int x = 0; x < spaces; x++)
+		std::cout << " ";
+	if (spaces >= 0)
+		std::cout << field;
+	else {
+		for (int x=0; x < 9; x++)
+			std::cout << field[x];
+		std::cout << ".";
+	}
+}
+
 void PhoneBook::printList()
 {
 	std::cout << "     Index|      Name| Last Name|  Nickname" << std::endl;
@@ -34,20 +48,11 @@ void PhoneBook::printList()
 			std::cout << " ";
 		std::cout << i;
 		std::cout << "|";
-		for (int x = 0; x < (10 - (int)strlen(c->name)); x++)
-			std::cout << " ";
-		for (int x = 0; x < 10 && x < (int)strlen(c->name); x++)
-			std::cout << c->name[x];
+		this->printField(c->name);
 		std::cout << "|";
-		for (int x = 0; x < (10 - (int)strlen(c->last_name)); x++)
-			std::cout << " ";
-		for (int x = 0; x < 10 && x < (int)strlen(c->last_name); x++)
-			std::cout << c->last_name[x];
+		this->printField(c->last_name);
 		std::cout << "|";
-		for (int x = 0; x < (10 - (int)strlen(c->nick)); x++)
-			std::cout << " ";
-		for (int x = 0; x < 10 && x < (int)strlen(c->nick); x++)
-			std::cout << c->nick[x];
+		this->printField(c->nick);
 		std::cout << "\n";
 	}
 }

@@ -12,6 +12,8 @@ class PhoneBook
 
 	void add(Contact *contact);
 
+	void printField(char *field);
+
 	void printList();
 
 	Contact *getContact(int index);
