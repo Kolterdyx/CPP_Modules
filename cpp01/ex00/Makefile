@@ -1,12 +1,12 @@
 
-NAME = phonebook
+NAME = zombie
 
-SRCS = PhoneBook.cpp Contact.cpp main.cpp
+SRCS = Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = g++
 
-CFLAGS = -Werror -Wall -Wextra -std=c++98
+CFLAGS = -Werror -Wall -Wextra -std=c++98 -g
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) -o $@ $<
