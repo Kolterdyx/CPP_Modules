@@ -3,12 +3,7 @@
 Zombie	*zombieHorde(int N, std::string name)
 {
 	Zombie *horde = new Zombie[N];
-	static Zombie zero;
 	for (int i = 0; i < N; i++)
-	{
-		char n[name.length()];
-		name.copy(n, name.length());
-		horde[i].name = n;
-	}
+		horde[i] = Zombie(name);
 	return (horde);
 }
