@@ -1,5 +1,9 @@
 **/*
 
+.vscode
+
+.vscode/**/*
+
 !**/Makefile
 !**/*.c
 !**/*.cpp
