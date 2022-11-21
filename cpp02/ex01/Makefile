@@ -1,7 +1,7 @@
 
-NAME = zombie
+NAME = fixed
 
-SRCS = Zombie.cpp main.cpp zombieHorde.cpp
+SRCS = Fixed.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = g++
