@@ -1,4 +1,8 @@
 
+
+#ifndef EX02_FIXED_HPP
+#define EX02_FIXED_HPP
+
 #include <iostream>
 
 class Fixed {
@@ -17,3 +21,5 @@ public:
 	int getRawBits() const;
 	void setRawBits(int const raw);
 };
+
+#endif

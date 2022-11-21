@@ -1,3 +1,6 @@
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+
 # include "Contact.hpp"
 # include <string>
 
@@ -20,3 +23,5 @@ class PhoneBook
 
 	~PhoneBook();
 };
+
+#endif

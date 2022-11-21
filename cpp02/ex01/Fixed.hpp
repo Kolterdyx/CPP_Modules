@@ -1,4 +1,7 @@
 
+#ifndef EX01_FIXED_HPP
+#define EX01_FIXED_HPP
+
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -30,3 +33,5 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Fixed& f);
 };
+
+#endif
