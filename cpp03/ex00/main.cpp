@@ -15,6 +15,9 @@ int main(void) {
 	claptrap2.attack("ClapTrap1");
 	for (int i = 0; i < 10; i++)
 		claptrap1.attack("ClapTrap2");
+	
+	claptrap1.takeDamage(500);
+	claptrap1.beRepaired(50);
 
 	return (0);
 }
