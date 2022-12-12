@@ -1,7 +1,5 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <stdlib.h>
 
 int	main(void)
 {

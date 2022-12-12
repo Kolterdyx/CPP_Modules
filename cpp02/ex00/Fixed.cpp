@@ -11,7 +11,7 @@ Fixed::Fixed(const Fixed &other) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed operator=(const Fixed& other) {
+Fixed Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		num = other.getRawBits();

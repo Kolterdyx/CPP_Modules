@@ -1,5 +1,3 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
 
 #include "PhoneBook.hpp"
 #include <iostream>
@@ -65,5 +63,3 @@ PhoneBook::~PhoneBook() {
 	for (int i = 0; i < 8; i++)
 		delete this->contacts[i];
 }
-
-#endif
