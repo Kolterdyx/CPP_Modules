@@ -8,3 +8,4 @@
 !**/.gitignore
 !**/cpp*
 !**/ex*
+!makeall.sh
