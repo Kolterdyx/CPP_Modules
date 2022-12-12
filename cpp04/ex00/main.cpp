@@ -8,19 +8,28 @@
 
 int main(void) {
 
-	const WrongAnimal* meta = new WrongAnimal();
-	const Animal* j = new Dog();
-	const WrongAnimal* i = new WrongCat();
-	std::cout << "Type: " << j->getType() << " " << std::endl;
-	std::cout << "Type: " << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
+	const Animal* meta = new Animal();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+	const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongAnimal* wrongCat = new WrongCat();
+	std::cout << "Type: " << cat->getType() << " " << std::endl;
+	std::cout << "Type: " << dog->getType() << " " << std::endl;
+	std::cout << "Type: " << meta->getType() << " " << std::endl;
+	std::cout << "Type: " << wrongCat->getType() << " " << std::endl;
+	std::cout << "Type: " << wrongMeta->getType() << " " << std::endl;
 	meta->makeSound();
+	cat->makeSound();
+	dog->makeSound();
 
+	wrongMeta->makeSound();
+	wrongCat->makeSound();
 
 	delete meta;
-	delete j;
-	delete i;
+	delete dog;
+	delete cat;
+	delete wrongCat;
+	delete wrongMeta;
 
 	return (0);
 }
