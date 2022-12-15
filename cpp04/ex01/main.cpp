@@ -1,35 +1,45 @@
 
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
 
 
 int main(void) {
 
-	const Animal* meta = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-	const WrongAnimal* wrongMeta = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
-	std::cout << "Type: " << cat->getType() << " " << std::endl;
-	std::cout << "Type: " << dog->getType() << " " << std::endl;
-	std::cout << "Type: " << meta->getType() << " " << std::endl;
-	std::cout << "Type: " << wrongCat->getType() << " " << std::endl;
-	std::cout << "Type: " << wrongMeta->getType() << " " << std::endl;
-	meta->makeSound();
-	cat->makeSound();
-	dog->makeSound();
+	int amount = 10;
+	Animal *animals[amount];
 
-	wrongMeta->makeSound();
-	wrongCat->makeSound();
+	std::cout << "\nArray created -------------------------\n" << std::endl;
 
-	delete meta;
-	delete dog;
+	for (int i=0; i < amount / 2; i++)
+	{
+		animals[i] = new Cat();
+	}
+
+	std::cout << "\nCats created  -------------------------\n" << std::endl;
+
+	for (int i=amount / 2; i < amount; i++)
+	{
+		animals[i] = new Dog();
+	}
+
+	std::cout << "\nDogs created  -------------------------\n" << std::endl;
+
+	for (int i=0; i < amount; i++)
+	{
+		std::cout << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
+		delete animals[i];
+	}
+
+	std::cout << "\nTesting copies ------------------------\n" << std::endl;
+
+	Cat *cat = new Cat();
+
+	Cat *cat2 = new Cat(*cat);
+
 	delete cat;
-	delete wrongCat;
-	delete wrongMeta;
+	delete cat2;
 
 	return (0);
 }

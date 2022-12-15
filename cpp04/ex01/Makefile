@@ -6,7 +6,8 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = g++
 
-CFLAGS = -Werror -Wall -Wextra -std=c++98
+CFLAGS = -Werror -Wall -Wextra -std=c++98 -MD -g
+
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -14,7 +15,9 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-.PHONY: all clean fclean re
+-include *.d
+
+.PHONY: all clean fclean re color
 
 all: $(NAME)
 

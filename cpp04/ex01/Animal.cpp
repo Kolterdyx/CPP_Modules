@@ -3,26 +3,31 @@
 #include "Animal.hpp"
 
 Animal::Animal(void) {
-	std::cout << "Animal default constructor called" << std::endl;
+	std::cout << WHITE << "Animal default constructor called" << RESET << std::endl;
+	brain = new Brain();
 }
 
 Animal::Animal(std::string type) : type(type) {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << WHITE << "Animal constructor called" << RESET << std::endl;
+	brain = new Brain();
 }
 
 Animal::Animal(Animal const & src) {
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << WHITE << "Animal copy constructor called" << RESET << std::endl;
 	*this = src;
 }
 
 Animal::~Animal(void) {
-	std::cout << "Animal destructor called" << std::endl;
+	delete brain;
+	std::cout << WHITE << "Animal destructor called" << RESET << std::endl;
 }
 
 Animal & Animal::operator=(Animal const & rhs) {
-	std::cout << "Animal assignment operator called" << std::endl;
-	if (this != &rhs)
+	std::cout << WHITE << "Animal assignment operator called" << RESET << std::endl;
+	if (this != &rhs) {
 		this->type = rhs.type;
+		*this->brain = *rhs.brain;
+	}
 	return (*this);
 }
 
