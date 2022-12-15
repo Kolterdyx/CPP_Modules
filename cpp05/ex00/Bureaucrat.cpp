@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	std::cout << "\033[1;37mBureaucrat assignation operator called\033[0m" << std::endl;
 	if (this != &other) {
-		// Copy attributes
+		this->grade = other.grade;
 	}
 	return *this;
 }
