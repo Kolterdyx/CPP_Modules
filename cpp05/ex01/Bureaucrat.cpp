@@ -11,7 +11,7 @@ Bureaucrat::Bureaucrat() {
 	std::cout << "\033[1;37mBureaucrat default constructor called\033[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) {
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name) {
 	std::cout << "\033[1;37mBureaucrat copy constructor called\033[0m" << std::endl;
 	*this = other;
 }
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	std::cout << "\033[1;37mBureaucrat assignation operator called\033[0m" << std::endl;
 	if (this != &other) {
-		// Copy attributes
+		this->grade = other.grade;
 	}
 	return *this;
 }
