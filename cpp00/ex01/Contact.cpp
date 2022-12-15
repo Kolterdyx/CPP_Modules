@@ -2,37 +2,22 @@
 
 Contact::Contact()
 {
-	do {
-		std::cout << "First Name: ";
-		std::getline(std::cin, this->name);
-	} while (this->name.empty());
-	do {
-		std::cout << "Last Name: ";
-		std::getline(std::cin, this->last_name);
-	} while (this->last_name.empty());
-	do {
-		std::cout << "Nickname: ";
-		std::getline(std::cin, this->nick);
-	} while (this->nick.empty());
-	do {
-		std::cout << "Phone Number: ";
-		std::getline(std::cin, this->phone_number);
-	} while (this->phone_number.empty());
-	do {
-		std::cout << "Darkest Secret: ";
-		std::getline(std::cin, this->darkest_secret);
-	} while (this->darkest_secret.empty());
+	this->name = get_prompt(std::string(CYAN) + "First Name: ");
+	this->last_name = get_prompt(std::string(CYAN) + "Last Name: ");
+	this->nick = get_prompt(std::string(CYAN) + "Nickname: ");
+	this->phone_number = get_prompt(std::string(CYAN) + "Phone Number: ");
+	this->darkest_secret = get_prompt(std::string(CYAN) + "Darkest Secret: ");
 }
 
 void Contact::print() {
-	std::cout << "Name:           ";
-	std::cout << this->name << std::endl;
-	std::cout << "Last Name:      ";
-	std::cout << this->last_name << std::endl;
-	std::cout << "Nickname:       ";
-	std::cout << this->nick << std::endl;
-	std::cout << "Phone Number:   ";
-	std::cout << this->phone_number << std::endl;
-	std::cout << "Darkest Secret: ";
-	std::cout << this->darkest_secret << std::endl;
+	std::cout << BOLDWHITE << "Name:           " << RESET;
+	std::cout << CYAN << this->name << RESET << std::endl;
+	std::cout << BOLDWHITE << "Last Name:      " << RESET;
+	std::cout << CYAN << this->last_name << RESET << std::endl;
+	std::cout << BOLDWHITE << "Nickname:       " << RESET;
+	std::cout << CYAN << this->nick << RESET << std::endl;
+	std::cout << BOLDWHITE << "Phone Number:   " << RESET;
+	std::cout << CYAN << this->phone_number << RESET << std::endl;
+	std::cout << BOLDWHITE << "Darkest Secret: " << RESET;
+	std::cout << CYAN << this->darkest_secret << RESET << std::endl;
 }

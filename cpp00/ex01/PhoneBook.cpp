@@ -38,25 +38,27 @@ void PhoneBook::printField(std::string field)
 
 void PhoneBook::printList()
 {
-	std::cout << "     Index|      Name| Last Name|  Nickname" << std::endl;
+	std::cout << BOLDYELLOW << "|     Index|      Name| Last Name|  Nickname|" << RESET << std::endl;
+	std::cout << BOLDYELLOW << "=============================================" << RESET << std::endl;
 	for (int i = 0; i < 8 && contacts[i] != NULL; i++)
 	{
+		std::cout << BOLDYELLOW << "|" << RESET;
 		Contact *c = contacts[i];
 		for (int x = 0; x < 9; x++)
 			std::cout << " ";
 		std::cout << i;
-		std::cout << "|";
+		std::cout << BOLDYELLOW << "|" << RESET;
 		this->printField(c->name);
-		std::cout << "|";
+		std::cout << BOLDYELLOW << "|" << RESET;
 		this->printField(c->last_name);
-		std::cout << "|";
+		std::cout << BOLDYELLOW << "|" << RESET;
 		this->printField(c->nick);
-		std::cout << "\n";
+		std::cout << BOLDYELLOW << "|\n" << RESET;
 	}
 }
 
 Contact *PhoneBook::getContact(int index) {
-	return this->contacts[index];
+	return (index < 8 && index >= 0) ? this->contacts[index] : nullptr;
 }
 
 PhoneBook::~PhoneBook() {
