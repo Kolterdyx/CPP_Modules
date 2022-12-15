@@ -3,6 +3,7 @@ NAME = animal
 
 SRCS = Animal.cpp main.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
+DOBJS = $(OBJS:.o=.d)
 
 CC = g++
 
@@ -22,7 +23,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(DOBJS)
 
 fclean: clean
 	rm -f $(NAME)
