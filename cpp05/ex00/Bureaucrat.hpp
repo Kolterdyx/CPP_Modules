@@ -22,25 +22,26 @@ public:
 	// Exceptions
 	class GradeTooHighException : public std::exception {
 	public:
-		GradeTooHighException();
-		GradeTooHighException(const GradeTooHighException &other);
-		GradeTooHighException &operator=(const GradeTooHighException &other);
-		~GradeTooHighException() throw();
 		virtual const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception {
 	public:
-		GradeTooLowException();
-		GradeTooLowException(const GradeTooLowException &other);
-		GradeTooLowException &operator=(const GradeTooLowException &other);
-		~GradeTooLowException() throw();
 		virtual const char *what() const throw();
 	};
 
 	// Getters
 	std::string const &getName() const;
 	int getGrade() const;
+
+	// Methods
+
+	void incrementGrade();
+	void decrementGrade();
+
+	// Overloads
+
+	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 };
 
 
