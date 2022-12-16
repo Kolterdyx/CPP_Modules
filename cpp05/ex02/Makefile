@@ -7,7 +7,7 @@ OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -Werror -MD -g --std=c++98
+CFLAGS = -Wall -Wextra -Werror -MD -g -std=c++98
 
 all: $(NAME)
 

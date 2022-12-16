@@ -20,7 +20,7 @@ public:
 	~RobotomyRequestForm();
 
 	// Constructors
-	RobotomyRequestForm(std::string target);
+	RobotomyRequestForm(const std::string& target);
 
 	// Getters
 	std::string const &getTarget() const;

@@ -6,18 +6,20 @@
 
 
 ShrubberyCreationForm::ShrubberyCreationForm() : target("default") {
-
+	std::cout << "\033[1;37mShrubberyCreationForm default constructor called\033[0m" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-
+	std::cout << "\033[1;37mShrubberyCreationForm destructor called\033[0m" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : Form(other) {
+	std::cout << "\033[1;37mShrubberyCreationForm copy constructor called\033[0m" << std::endl;
 	*this = other;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
+	std::cout << "\033[1;37mShrubberyCreationForm assignment operator called\033[0m" << std::endl;
 	if (this != &other) {
 		Form::operator=(other);
 		this->target = other.target;
@@ -32,6 +34,7 @@ std::string const &ShrubberyCreationForm::getTarget() const {
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+	Form::execute(executor);
 	std::ofstream file;
 	file.open(this->target + "_shrubbery");
 	if (file.is_open()) {

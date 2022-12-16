@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other) {
-	std::cout << "\033[1;37mPresidentialPardonForm assignation operator called\033[0m" << std::endl;
+	std::cout << "\033[1;37mPresidentialPardonForm assignment operator called\033[0m" << std::endl;
 	if (this != &other) {
 		this->target = other.target;
 	}
@@ -37,5 +37,6 @@ std::string const &PresidentialPardonForm::getTarget() const {
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
+	Form::execute(executor);
 	std::cout << target << " has been pardoned by Zafod Beeblebrox." << std::endl;
 }
