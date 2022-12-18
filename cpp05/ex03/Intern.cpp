@@ -13,7 +13,7 @@ Intern::Intern() {
 Intern &Intern::operator=(Intern const &other) {
 	std::cout << "\033[1;37mIntern assignment operator called\033[0m" << std::endl;
 	if (this != &other) {
-		// This is where I would copy the data, if I had any!
+		// This is where I would copy my data, if I had any!
 	}
 	return *this;
 }
