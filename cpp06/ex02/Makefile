@@ -1,7 +1,7 @@
 
-NAME = serialization
+NAME = identify
 
-SRCS = main.cpp
+SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 
