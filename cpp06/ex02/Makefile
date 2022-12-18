@@ -1,7 +1,7 @@
 
-NAME = intern
+NAME = serialization
 
-SRCS = main.cpp Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+SRCS = main.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 

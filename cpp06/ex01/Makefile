@@ -1,7 +1,7 @@
 
-NAME = convert
+NAME = serialization
 
-SRCS = main.cpp
+SRCS = main.cpp Data.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 

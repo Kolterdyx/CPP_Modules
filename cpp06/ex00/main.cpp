@@ -1,6 +1,6 @@
 
 
-#include "convert.h"
+#include "Scalar.hpp"
 
 int main(int argc, char **argv)
 {
@@ -9,5 +9,10 @@ int main(int argc, char **argv)
 		std::cout << "Error: Wrong number of arguments" << std::endl;
 		return (1);
 	}
+	Scalar scalar(argv[1]);
+	scalar.convertToChar();
+	scalar.convertToInt();
+	scalar.convertToFloat();
+	scalar.convertToDouble();
 	return (0);
 }
