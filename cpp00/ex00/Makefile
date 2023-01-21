@@ -4,7 +4,7 @@ NAME = megaphone
 SRC = megaphone.cpp
 OBJ = megaphone.o
 
-CC = g++
+CC = c++
 
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 

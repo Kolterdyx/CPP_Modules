@@ -4,7 +4,7 @@ NAME = zombie
 SRCS = Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 

@@ -4,7 +4,7 @@ NAME = claptrap
 SRCS = ClapTrap.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 

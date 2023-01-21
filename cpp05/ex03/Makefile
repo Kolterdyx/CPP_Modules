@@ -5,7 +5,7 @@ SRCS = main.cpp Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyReques
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -MD -g -std=c++98
 

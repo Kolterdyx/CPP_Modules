@@ -5,7 +5,7 @@ SRCS = main.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -MD -g -std=c++98
 

@@ -5,7 +5,7 @@ SRCS = Animal.cpp main.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 DOBJS = $(OBJS:.o=.d)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Werror -Wall -Wextra -std=c++98 -MD -g
 
