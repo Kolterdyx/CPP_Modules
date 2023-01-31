@@ -1,5 +1,9 @@
 
 #include <iostream>
+#include <stdint.h>
+#include <cstdlib>
+#include <cstdio>
+#include <valarray>
 #include "Harl.hpp"
 
 int main(void)
