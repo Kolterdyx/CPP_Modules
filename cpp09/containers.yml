@@ -1,0 +1,10 @@
+
+ex00:
+  - 'std::map'
+
+ex01:
+   - 'std::queue'
+
+ex02:
+  - 'std::vector'
+  - 'std::array'
