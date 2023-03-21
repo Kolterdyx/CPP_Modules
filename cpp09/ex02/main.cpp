@@ -5,9 +5,16 @@
 #include <deque>
 #include "PmergeMe.hpp"
 
-template<class container>
-container sort(container elements) {
-	PmergeMe<container> pmergeMe(elements);
+
+/**
+ * @brief Sorts a T using the PmergeMe algorithm
+ * @tparam T Must be a T that supports push_back, size, and operator[]
+ * @param elements Elements to sort
+ * @return sorted elements
+ */
+template<typename T>
+T sort(T elements) {
+	PmergeMe<T> pmergeMe(elements);
 
 	return pmergeMe.sort();
 }

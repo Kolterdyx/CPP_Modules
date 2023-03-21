@@ -11,17 +11,17 @@
 
 #define THRESHOLD 50
 
-template<class container>
+template<class T>
 class PmergeMe {
 
 private:
-	container elements;
+	T elements;
 
-	static container mergeInsertSort(const container &elems) {
+	static T mergeInsertSort(const T &elems) {
 		if (elems.size() <= THRESHOLD)
 			return insertionSort(elems);
-		container left;
-		container right;
+		T left;
+		T right;
 		for (size_t i = 0; i < elems.size(); i++) {
 			if (i < elems.size() / 2)
 				left.push_back(elems[i]);
@@ -31,7 +31,7 @@ private:
 		left = mergeInsertSort(left);
 		right = mergeInsertSort(right);
 
-		container result;
+		T result;
 		size_t leftIndex = 0;
 		size_t rightIndex = 0;
 		while (leftIndex < left.size() && rightIndex < right.size()) {
@@ -54,8 +54,8 @@ private:
 		return result;
 	}
 
-	static container insertionSort(const container &elems) {
-		container result = elems;
+	static T insertionSort(const T &elems) {
+		T result = elems;
 		for (size_t i = 1; i < result.size(); i++) {
 			size_t j = i;
 			while (j > 0 && result[j] < result[j - 1]) {
@@ -73,7 +73,7 @@ public:
 	PmergeMe() {}
 
 
-	explicit PmergeMe(const container &elements)
+	explicit PmergeMe(const T &elements)
 	{
 		this->elements = elements;
 	}
@@ -81,7 +81,7 @@ public:
 	~PmergeMe() {}
 
 
-	container sort() {
+	T sort() {
 		return mergeInsertSort(elements);
 	}
 
