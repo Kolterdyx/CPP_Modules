@@ -9,7 +9,7 @@
 #include <array>
 #include <vector>
 
-#define THRESHOLD 100
+#define THRESHOLD 43 // 43 is the best value for this threshold ( n <= 8 log n )
 
 template<class T>
 class PmergeMe {
