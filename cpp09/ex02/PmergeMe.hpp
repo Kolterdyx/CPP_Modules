@@ -9,7 +9,7 @@
 #include <array>
 #include <vector>
 
-#define THRESHOLD 50
+#define THRESHOLD 100
 
 template<class T>
 class PmergeMe {
