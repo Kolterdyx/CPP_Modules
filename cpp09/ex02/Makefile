@@ -1,7 +1,7 @@
 
 NAME = PmergeMe
 
-SRCS = main.cpp PmergeMe.cpp
+SRCS = main.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 
