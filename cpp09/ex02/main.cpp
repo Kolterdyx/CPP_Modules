@@ -36,6 +36,10 @@ int main(int argc, char **argv) {
 		int n;
 		try {
 			n = std::stoi(argv[i]);
+			if (n < 0) {
+				std::cout << "Number cant be negative: " << argv[i] << std::endl;
+				return 1;
+			}
 		} catch (std::invalid_argument &e) {
 			std::cout << "Invalid argument: " << argv[i] << std::endl;
 			return 1;
