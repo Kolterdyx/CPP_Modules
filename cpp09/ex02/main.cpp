@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 
 	std::vector<int> sorted = sort(elementsVector);
 
-	std::cout << "\n\nAfter:  ";
+	std::cout << "\nAfter:  ";
 	for (size_t i = 0; i < sorted.size(); i++) {
 		std::cout << sorted[i] << " ";
 	}
