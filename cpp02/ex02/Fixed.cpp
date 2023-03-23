@@ -35,30 +35,37 @@ static uint32_t	reverse_bits(uint32_t bitset, uint32_t bits)
 Fixed::Fixed()
 {
 	num = 0;
+	#ifdef DEBUG
 	std::cout << "Default constructor called" << std::endl;
+	#endif
 }
 
 Fixed::Fixed(int n)
 {
 	num = n << fract_bits;
+
+	#ifdef DEBUG
 	std::cout << "Int constructor called" << std::endl;
+	#endif
 }
 
 Fixed::Fixed(float n)
 {
 	num = roundf(n * (0b1 << fract_bits));
+#ifdef DEBUG
 	std::cout << "Float constructor called" << std::endl;
+#endif
 }
 
 Fixed::Fixed(const Fixed &other)
 {
 	num = other.num;
-	std::cout << "Copy constructor called" << std::endl;
+	LOG("Copy constructor called");
 }
 
 Fixed Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	LOG("Copy assignment operator called");
 	if (this != &other)
 		num = other.getRawBits();
 	return (*this);
@@ -66,19 +73,19 @@ Fixed Fixed::operator=(const Fixed& other)
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	LOG("getRawBits member function called");
 	return (num);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	LOG("setRawBits member function called");
 	num = (int)raw;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	LOG("Destructor called");
 }
 
 float Fixed::getDecimalPart() const
