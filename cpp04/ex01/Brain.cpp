@@ -11,12 +11,12 @@ Brain::Brain() {
 	std::cout << WHITE << "Brain default constructor called" << RESET << std::endl;
 }
 
-Brain::Brain(Brain const &other) {
+Brain::Brain(const Brain& other) {
 	std::cout << WHITE << "Brain copy constructor called" << RESET << std::endl;
 	*this = other;
 }
 
-Brain &Brain::operator=(Brain const &other) {
+Brain &Brain::operator=(const Brain& other) {
 	std::cout << WHITE << "Brain assignment operator called" << RESET << std::endl;
 	if (this != &other) {
 		for (int i = 0; i < 100; i++) {

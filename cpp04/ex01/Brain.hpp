@@ -21,8 +21,8 @@ class Brain {
 
 public:
 	Brain();
-	Brain(Brain const &other);
-	Brain &operator=(Brain const &other);
+	Brain(const Brain& other);
+	Brain &operator=(const Brain& other);
 	~Brain();
 
 	std::string getIdea(int i) const;

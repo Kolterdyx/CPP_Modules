@@ -5,7 +5,7 @@ Cat::Cat(void) : Animal("Cat") {
 	std::cout << WHITE << "Cat default constructor called" << RESET << std::endl;
 }
 
-Cat::Cat(Cat const & src) {
+Cat::Cat(const Cat& src) : Animal(src) {
 	std::cout << WHITE << "Cat copy constructor called" << RESET << std::endl;
 	*this = src;
 }
@@ -14,7 +14,7 @@ Cat::~Cat(void) {
 	std::cout << WHITE << "Cat destructor called" << RESET << std::endl;
 }
 
-Cat & Cat::operator=(Cat const & rhs) {
+Cat & Cat::operator=(const Cat& rhs) {
 	std::cout << WHITE << "Cat assignment operator called" << RESET << std::endl;
 	Animal::operator=(rhs);
 	return (*this);

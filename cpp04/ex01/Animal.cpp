@@ -26,7 +26,7 @@ Animal & Animal::operator=(Animal const & rhs) {
 	std::cout << WHITE << "Animal assignment operator called" << RESET << std::endl;
 	if (this != &rhs) {
 		this->type = rhs.type;
-		*this->brain = *rhs.brain;
+		this->brain = new Brain(*rhs.brain);
 	}
 	return (*this);
 }
