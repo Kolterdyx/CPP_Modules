@@ -39,7 +39,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->name << " has entered in Gate keeper mode" << std::endl;
+	std::cout << "ScavTrap " << this->name << " has entered Gate keeper mode" << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target)
