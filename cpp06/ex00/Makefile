@@ -1,7 +1,7 @@
 
 NAME = convert
 
-SRCS = main.cpp Scalar.cpp
+SRCS = main.cpp ScalarConverter.cpp
 
 OBJS = $(addprefix obj/, $(SRCS:.cpp=.o))
 

@@ -9,3 +9,4 @@
 !**/cpp*
 !**/ex*
 !makeall.sh
+.vscode/
