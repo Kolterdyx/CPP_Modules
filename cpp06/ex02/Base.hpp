@@ -5,8 +5,6 @@
 #ifndef CPP_MODULES_BASE_HPP
 #define CPP_MODULES_BASE_HPP
 
-#include <iostream>
-
 class Base {
 public:
 	virtual ~Base();
