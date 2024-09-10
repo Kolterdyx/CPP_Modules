@@ -6,9 +6,6 @@
 # include <string>
 # include <sstream>
 
-# define MAX_TYPE(t) ((t)(~((unsigned t)-1 << (sizeof(t) * 8 - 1))))
-# define MIN_TYPE(t) ((t)(((unsigned t)-1 << (sizeof(t) * 8 - 1))))
-
 
 template<typename T>
 void message(const std::string &str, T t, bool err) {
@@ -19,9 +16,17 @@ void message(const std::string &str, T t, bool err) {
 	}
 }
 
-bool convertLiterals(const std::string &str);
+template<typename T>
+T streamcast(const std::string &str) {
+    std::stringstream ss(str);
+    T t;
+    ss >> t;
+    return t;
+}
 
-void convertRaw(const std::string &str);
+bool isCharLiteral(const std::string &str);
+
+void convertRaw(const std::string &str, bool isChar);
 
 class ScalarConverter
 {

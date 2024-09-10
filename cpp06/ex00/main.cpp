@@ -2,7 +2,14 @@
 
 #include "ScalarConverter.hpp"
 
-int main(int argc, char **argv)
+/*
+ * Number max and min values
+ *
+ * char: -128 to 127
+ * int: -2147483648 to 2147483647
+ */
+
+int main(const int argc, char **argv)
 {
 	if (argc != 2)
 	{
@@ -11,8 +18,5 @@ int main(int argc, char **argv)
 	}
 	ScalarConverter::convert(argv[1]);
 
-	std::cout << (int)MAX_TYPE(char) << std::endl;
-	std::cout << (int)MIN_TYPE(char) << std::endl;
-	std::cout << MAX_TYPE(int) << std::endl;
-	std::cout << MIN_TYPE(int) << std::endl;
+
 }
