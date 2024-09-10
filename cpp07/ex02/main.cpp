@@ -1,8 +1,13 @@
 
-#include "Array.hpp"
+#include <cstdlib>
 
+#include "Array.hpp"
+#include <iostream>
+#include <sstream>
 
 #define MAX_VAL 750
+
+#define SSTR( x ) static_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
 
 
 void more_tests() {
@@ -32,7 +37,7 @@ void more_tests() {
 	Array<std::string> stringR(5);
 	for (size_t i = 0; i < stringR.size(); i++)
 	{
-		stringR[i] = std::to_string(i);
+		stringR[i] = SSTR(i);
 		std::cout << stringR[i] << "s ";
 	}
 	std::cout << std::endl;
