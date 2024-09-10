@@ -42,7 +42,19 @@ void identify(Base &p) {
 }
 
 void identify(Base *p) {
-	identify(*p);
+	if (dynamic_cast<A *>(p)) {
+		std::cout << "A" << std::endl;
+		return;
+	}
+	if (dynamic_cast<B *>(p)) {
+		std::cout << "B" << std::endl;
+		return;
+	}
+	if (dynamic_cast<C *>(p)) {
+		std::cout << "C" << std::endl;
+		return;
+	}
+	std::cout << "Unknown" << std::endl;
 }
 
 int main() {

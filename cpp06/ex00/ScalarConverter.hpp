@@ -30,11 +30,12 @@ void convertRaw(const std::string &str, bool isChar);
 
 class ScalarConverter
 {
-public:
+private:
 	ScalarConverter();
 	ScalarConverter(ScalarConverter const &other);
 	ScalarConverter &operator=(ScalarConverter const &other);
-	virtual ~ScalarConverter();
+	~ScalarConverter();
+public:
 
 	static void convert(const std::string &str);
 
