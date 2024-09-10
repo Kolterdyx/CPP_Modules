@@ -29,6 +29,9 @@ template<typename T>
 Array<T> &Array<T>::operator=(const Array &other) {
 	if (this != &other) {
 		_size = other._size;
+		if (_array) {
+			delete[] _array;
+		}
 		_array = new T[_size];
 		for (unsigned int i = 0; i < _size; i++) {
 			_array[i] = T(other._array[i]);
