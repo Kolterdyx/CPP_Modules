@@ -10,7 +10,7 @@
 template <typename T>
 class Array {
 private:
-	T *_array = NULL;
+	T *_array;
 	unsigned int _size;
 	unsigned int _capacity;
 

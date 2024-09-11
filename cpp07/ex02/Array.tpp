@@ -22,6 +22,7 @@ Array<T>::Array(unsigned int n) {
 
 template<typename T>
 Array<T>::Array(const Array &other) {
+	_array = NULL;
 	*this = other;
 }
 

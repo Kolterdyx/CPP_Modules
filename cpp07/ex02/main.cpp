@@ -15,12 +15,14 @@ void more_tests() {
 
 	Array<int> intRR(5);
 	intR = intRR;
+	std::cout << "intR[i]: ";
 	for (size_t i = 0; i < intR.size(); i++)
 	{
 		intR[i] = i;
 		std::cout << intR[i] << " ";
 	}
 	std::cout << std::endl;
+	std::cout << "intRR[i]: ";
 	for (size_t i = 0; i < intRR.size(); i++)
 	{
 		std::cout << intRR[i] << " ";
@@ -28,6 +30,7 @@ void more_tests() {
 	std::cout << std::endl;
 
 	Array<float> floatR(25);
+	std::cout << "floatR[i]: ";
 	for (size_t i = 0; i < floatR.size(); i++)
 	{
 		std::cout << floatR[i] << "f ";
@@ -35,9 +38,10 @@ void more_tests() {
 	std::cout << std::endl;
 
 	Array<std::string> stringR(5);
+	std::cout << "stringR[i]: ";
 	for (size_t i = 0; i < stringR.size(); i++)
 	{
-		stringR[i] = SSTR(i);
+		stringR[i] = ( std::stringstream() << std::dec << i ).str();
 		std::cout << stringR[i] << "s ";
 	}
 	std::cout << std::endl;
@@ -89,23 +93,23 @@ int main() {
 			return 1;
 		}
 	}
+	std::cout << "mirror test passed\n";
 
 	try {
 		numbers[-2] = 0;
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << '\n';
+		std::cout << "Negative index test passed\n";
 	}
 	try {
 		numbers[MAX_VAL] = 0;
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << '\n';
+		std::cout << "MAX_VAL index test passed\n";
 	}
 
-	for (int i = 0; i < MAX_VAL; i++) {
-		numbers[i] = rand();
-	}
 	delete[] mirror;
 
 	more_tests();
