@@ -6,6 +6,7 @@
 #define CPP_MODULES_ARRAY_TPP
 
 #include "Array.hpp"
+#include <sstream>
 
 template<typename T>
 Array<T>::Array() {
@@ -55,6 +56,14 @@ T &Array<T>::operator[](unsigned int i) {
 template<typename T>
 unsigned int Array<T>::size() const {
 	return _size;
+}
+
+
+template <typename T>
+std::string to_string(T x) {
+	std::stringstream ss;
+	ss << x;
+	return ss.str();
 }
 
 #endif //CPP_MODULES_ARRAY_TPP

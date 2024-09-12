@@ -7,8 +7,6 @@
 
 #define MAX_VAL 750
 
-#define SSTR( x ) static_cast< std::ostringstream & >( ( std::ostringstream() << std::dec << x ) ).str()
-
 
 void more_tests() {
 	Array<int> intR;
@@ -41,8 +39,8 @@ void more_tests() {
 	std::cout << "stringR[i]: ";
 	for (size_t i = 0; i < stringR.size(); i++)
 	{
-		stringR[i] = ( std::stringstream() << std::dec << i ).str();
-		std::cout << stringR[i] << "s ";
+		stringR[i] = "index " +  to_string(i);
+		std::cout << "'" << stringR[i] << "', ";
 	}
 	std::cout << std::endl;
 
@@ -50,27 +48,7 @@ void more_tests() {
 	for (size_t i = 0; i < 5; i++)
 		stringRR[i] = "42";
 	for (size_t i = 0; i < stringR.size(); i++)
-		std::cout << stringR[i] << "s <> " << stringRR[i] << std::endl;
-
-	std::cout << "---" << std::endl;
-
-	try
-	{
-		intRR[-1] = 2;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	try
-	{
-		intRR[999] = 2;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+		std::cout << "stringR[i]: '" << stringR[i] << "' | stringRR[i]: '" << stringRR[i] << "'" << std::endl;
 }
 
 int main() {
