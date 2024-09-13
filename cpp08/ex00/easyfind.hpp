@@ -3,6 +3,8 @@
 #define CPP_MODULES_EASYFIND_HPP
 
 #include <iostream>
+#include <sstream>
+
 
 template <typename T>
 typename T::iterator easyfind(T &container, int value) {
@@ -13,7 +15,7 @@ typename T::iterator easyfind(T &container, int value) {
 			return it;
 		it++;
 	}
-	throw std::exception();
+	return ite;
 }
 
 #endif //CPP_MODULES_EASYFIND_HPP
