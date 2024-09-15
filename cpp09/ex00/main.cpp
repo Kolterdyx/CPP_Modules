@@ -3,6 +3,7 @@
 #include "BitcoinExchange.hpp"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 
 int main(int argc, char **argv) {
@@ -14,7 +15,7 @@ int main(int argc, char **argv) {
 	}
 
 	std::string filename(argv[1]);
-	std::ifstream file(filename);
+	std::ifstream file((filename.data()));
 	std::string line;
 	int i = -1;
 
@@ -22,7 +23,7 @@ int main(int argc, char **argv) {
 		i++;
 		// Verify line format
 		if (line.find('|') == std::string::npos) {
-			std::cout << "Error (line " + std::to_string(i + 1) + "): Invalid line format\n";
+			std::cout << "Error (line " + to_string(i + 1) + "): Invalid line format\n";
 			continue;
 		}
 
@@ -36,36 +37,36 @@ int main(int argc, char **argv) {
 		if (date == "date" && valueStr == "value" && i == 0)
 			continue;
 		else if (i == 0) {
-			std::cout << "Error (line " + std::to_string(i + 1) +
+			std::cout << "Error (line " + to_string(i + 1) +
 						 "): Invalid header\n";
 			continue;
 		}
 
 		// Verify date format
 		if (date.length() != 10 || (date[4] != '-' || date[7] != '-')) {
-			std::cout << "Error (line " + std::to_string(i + 1) + "): Invalid date format\n";
+			std::cout << "Error (line " + to_string(i + 1) + "): Invalid date format\n";
 			continue;
 		}
 
-		int year = std::stoi(date.substr(0, 4));
-		int month = std::stoi(date.substr(5, 2));
-		int day = std::stoi(date.substr(8, 2));
+		int year = stringto<int>(date.substr(0, 4));
+		int month = stringto<int>(date.substr(5, 2));
+		int day = stringto<int>(date.substr(8, 2));
 		try {
 			BitcoinExchange::verifyDate(year, month, day);
 		} catch (std::invalid_argument &e) {
-			std::cout << "Error (line " + std::to_string(i + 1) + "): " << e.what() << std::endl;
+			std::cout << "Error (line " + to_string(i + 1) + "): " << e.what() << std::endl;
 			continue;
 		}
 
 		float value;
 		try {
-			value = std::stof(valueStr);
+			value = stringto<float>(valueStr);
 			if (value < 0)
 				throw std::invalid_argument("Value is negative (" + valueStr + ")");
 			if (value > 1000)
 				throw std::invalid_argument("Value is greater than 1000 (" + valueStr + ")");
 		} catch (std::invalid_argument &e) {
-			std::cout << "Error (line " + std::to_string(i + 1) + "): " << e.what() << "\n";
+			std::cout << "Error (line " + to_string(i + 1) + "): " << e.what() << "\n";
 			continue;
 		}
 
@@ -73,7 +74,7 @@ int main(int argc, char **argv) {
 			float result = btc.getValue(date);
 			std::cout << date << " => " << value << " = " << result << std::endl;
 		} catch (std::invalid_argument &e) {
-			std::cout << "Error (line " + std::to_string(i + 1) + "): " << e.what() << std::endl;
+			std::cout << "Error (line " + to_string(i + 1) + "): " << e.what() << std::endl;
 		}
 	}
 }

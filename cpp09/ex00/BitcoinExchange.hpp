@@ -7,11 +7,29 @@
 
 
 #include <map>
+#include <sstream>
+
+template <typename T>
+std::string to_string(T value) {
+	std::ostringstream os;
+	os << value;
+	return os.str();
+}
+
+template <typename T>
+T stringto(const std::string &str) {
+	std::istringstream ss(str);
+	T num;
+	ss >> num;
+	return num;
+}
 
 class BitcoinExchange {
 
 private:
 	std::map<std::string, float> valueHistory;
+
+	static long dateCompare(std::string date1, std::string date2);
 
 public:
 	BitcoinExchange();
