@@ -1,10 +1,11 @@
 //
-// Created by Ciro Garcia belmonte on 3/20/23.
+// Created by Ciro Garcia Belmonte on 3/20/23.
 //
 
-#include <string>
 #include <iostream>
 #include "RPN.hpp"
+
+#include <stack>
 
 RPN::RPN() {
 
@@ -12,79 +13,49 @@ RPN::RPN() {
 
 RPN::RPN(const std::string &expression)
 {
-	// We can interpret the start of the expression "n m op" as "(0) n + m op"
-	// This makes it easier to parse the expression, as we can store the first number
-	// as "n +" and then parse the rest of the expression as "m op"
-
-	int i = 0;
-	// find the first number
-	while (expression[i] == ' ')
-		i++;
-	if (expression[i] < '0' || expression[i] > '9')
-		throw std::invalid_argument("Invalid expression");
-	operation op;
-	op.v = expression[i] - '0';
-	op.op = '+';
-	operations.push(op);
-	i++;
-	// Parse the rest of the expression
-	while (i < (int)expression.length()) {
-		// Skip spaces
-		while (expression[i] == ' ')
-			i++;
-		// Check if we reached the end of the expression
-		if (i == (int)expression.length())
-			break;
-		// We should have a number now
-		if (expression[i] < '0' || expression[i] > '9')
-			throw std::invalid_argument("Invalid number");
-		// Parse the number
-		op.v = expression[i] - '0';
-		// Skip the number
-		i++;
-		// Skip spaces
-		while (expression[i] == ' ')
-			i++;
-		// Check if we reached the end of the expression
-		if (i == (int)expression.length())
-			throw std::invalid_argument("Invalid expression");
-		// We should have an operator now
-		if (expression[i] != '+' && expression[i] != '-' && expression[i] != '*' && expression[i] != '/')
-			throw std::invalid_argument("Invalid operator (" + std::string(1, expression[i]) + ")");
-		// Parse the operator
-		op.op = expression[i];
-		// Skip the operator
-		i++;
-		// Push the operation
-		operations.push(op);
+	std::stack<float> stack;
+	for (size_t i = 0; i < expression.size(); i++) {
+		if (expression[i] == ' ')
+			continue;
+		if (expression[i] >= '0' && expression[i] <= '9') {
+			stack.push(static_cast<float>(expression[i] - '0'));
+			while (expression[i] >= '0' && expression[i] <= '9')
+				i++;
+		} else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/') {
+			if (stack.size() < 2) {
+				throw std::invalid_argument("Error");
+			}
+			const float b = stack.top();
+			stack.pop();
+			const float a = stack.top();
+			stack.pop();
+			switch (expression[i]) {
+				case '+':
+					stack.push(a + b);
+					break;
+				case '-':
+					stack.push(a - b);
+					break;
+				case '*':
+					stack.push(a * b);
+					break;
+				case '/':
+					stack.push(a / b);
+					break;
+				default:
+					throw std::invalid_argument("Error");
+			}
+		} else {
+			throw std::invalid_argument("Error");
+		}
 	}
+
+	if (stack.size() != 1) {
+		throw std::invalid_argument("Error");
+	}
+	std::cout << stack.top() << std::endl;
 }
 
 RPN::~RPN() {
 
-}
-
-float RPN::calculate() {
-	float result = 0;
-	operation op;
-	while (!operations.empty()) {
-		op = operations.front();
-		operations.pop();
-		switch (op.op) {
-			case '+':
-				result += (float)op.v;
-				break;
-			case '-':
-				result -= (float)op.v;
-				break;
-			case '*':
-				result *= (float)op.v;
-				break;
-			case '/':
-				result /= (float)op.v;
-				break;
-		}
-	}
-
-	return result;
 }

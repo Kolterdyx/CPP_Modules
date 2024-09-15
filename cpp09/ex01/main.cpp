@@ -17,6 +17,4 @@ int main(int argc, char **argv) {
 		std::cout << e.what() << std::endl;
 		return 1;
 	}
-	float result = rpn.calculate();
-	std::cout << result << std::endl;
 }
