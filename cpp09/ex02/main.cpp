@@ -5,11 +5,10 @@
 #include "PmergeMe.hpp"
 #include <ctime>
 #include <sys/time.h>
+#include <algorithm>
 
 
-
-
-int main(int argc, char **argv) {
+int main(const int argc, char **argv) {
 
 	if (argc == 1) {
 		std::cout << "Usage: " << argv[0] << " <number> [number] [number] ..." << std::endl;
@@ -30,7 +29,11 @@ int main(int argc, char **argv) {
 				return 1;
 			}
 		} catch (std::invalid_argument &e) {
-			std::cout << "Invalid argument: " << argv[i] << std::endl;
+			std::cout << "Invalid argument: '" << argv[i] << "'\n";
+			return 1;
+		}
+		if (std::find(elementsVector.begin(), elementsVector.end(), n) != elementsVector.end()) {
+			std::cout << "Number repeated: " << argv[i] << std::endl;
 			return 1;
 		}
 		elementsVector.push_back(n);
@@ -63,5 +66,5 @@ int main(int argc, char **argv) {
 	clock_gettime(CLOCK_REALTIME, &end);
 	elapsed = ((end.tv_sec - start.tv_sec) * 1000000.) + ((end.tv_nsec - start.tv_nsec) / 1000.);
 	std::cout << "Time to sort " << to_string(argc - 1) << " elements with \"std::deque\": " << elapsed << " us" << std::endl;
-
+	return 0;
 }

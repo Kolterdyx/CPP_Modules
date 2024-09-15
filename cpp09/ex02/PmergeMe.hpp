@@ -109,6 +109,15 @@ std::string to_string(T n) {
 
 template<typename T>
 T stringto(const std::string &str) {
+
+	if (str.empty())
+		throw std::invalid_argument("Empty string");
+	// Check if the string is a number
+	for (int i = 0; i < (int)str.size(); i++) {
+		if (!std::isdigit(str[i]))
+			throw std::invalid_argument("Invalid argument");
+	}
+
 	std::stringstream ss(str);
 	T n;
 	ss >> n;
