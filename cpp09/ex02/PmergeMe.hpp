@@ -6,8 +6,7 @@
 #define CPP_MODULES_PMERGEME_HPP
 
 
-#include <array>
-#include <vector>
+#include <sstream>
 
 #define THRESHOLD 43 // 43 is the best value for this threshold ( n <= 8 log n )
 
@@ -87,6 +86,34 @@ public:
 
 
 };
+
+/**
+ * @brief Sorts a T using the PmergeMe algorithm
+ * @tparam T Must be a T that supports push_back, size, and operator[]
+ * @param elements Elements to sort
+ * @return sorted elements
+ */
+template<typename T>
+T sort(T elements) {
+	PmergeMe<T> pmergeMe(elements);
+
+	return pmergeMe.sort();
+}
+
+template<typename T>
+std::string to_string(T n) {
+	std::stringstream ss;
+	ss << n;
+	return ss.str();
+}
+
+template<typename T>
+T stringto(const std::string &str) {
+	std::stringstream ss(str);
+	T n;
+	ss >> n;
+	return n;
+}
 
 
 #endif //CPP_MODULES_PMERGEME_HPP

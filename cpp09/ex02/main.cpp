@@ -1,23 +1,12 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
 #include <deque>
 #include "PmergeMe.hpp"
+#include <ctime>
+#include <sys/time.h>
 
 
-/**
- * @brief Sorts a T using the PmergeMe algorithm
- * @tparam T Must be a T that supports push_back, size, and operator[]
- * @param elements Elements to sort
- * @return sorted elements
- */
-template<typename T>
-T sort(T elements) {
-	PmergeMe<T> pmergeMe(elements);
-
-	return pmergeMe.sort();
-}
 
 
 int main(int argc, char **argv) {
@@ -27,15 +16,15 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	std::chrono::high_resolution_clock::time_point start;
-	std::chrono::high_resolution_clock::time_point end;
+	timespec start = {};
+	timespec end = {};
 
 	std::vector<int> elementsVector;
 	std::deque<int> elementsDeque;
 	for (int i = 1; i < argc; i++) {
 		int n;
 		try {
-			n = std::stoi(argv[i]);
+			n = stringto<int>(argv[i]);
 			if (n < 0) {
 				std::cout << "Number cant be negative: " << argv[i] << std::endl;
 				return 1;
@@ -62,15 +51,17 @@ int main(int argc, char **argv) {
 	}
 	std::cout << std::endl;
 
-	start = std::chrono::high_resolution_clock::now();
+
+	clock_gettime(CLOCK_REALTIME, &start);
 	sort(elementsVector);
-	end = std::chrono::high_resolution_clock::now();
-	std::cout << "Time to sort " << std::to_string(argc - 1) << " elements with \"std::vector\": " << (double)std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() / 1000. << " us" << std::endl;
+	clock_gettime(CLOCK_REALTIME, &end);
+	double elapsed = ((end.tv_sec - start.tv_sec) * 1000000.) + ((end.tv_nsec - start.tv_nsec) / 1000.);
+	std::cout << "Time to sort " << to_string(argc - 1) << " elements with \"std::vector\": " << elapsed << " us" << std::endl;
 
-
-	start = std::chrono::high_resolution_clock::now();
+	clock_gettime(CLOCK_REALTIME, &start);
 	sort(elementsDeque);
-	end = std::chrono::high_resolution_clock::now();
-	std::cout << "Time to sort " << std::to_string(argc - 1) << " elements with \"std::deque\": " << (double)std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() / 1000. << " us" << std::endl;
+	clock_gettime(CLOCK_REALTIME, &end);
+	elapsed = ((end.tv_sec - start.tv_sec) * 1000000.) + ((end.tv_nsec - start.tv_nsec) / 1000.);
+	std::cout << "Time to sort " << to_string(argc - 1) << " elements with \"std::deque\": " << elapsed << " us" << std::endl;
 
 }
